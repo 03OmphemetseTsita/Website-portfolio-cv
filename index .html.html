@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Omphemetse Maria Tsita - Professional CV</title>
+  <link rel="stylesheet" href="STYLE CSS CV.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <header>
+  <img src="profile.jpg" alt="Omphemetse Maria Tsita" class="profile-pic" />
+  <h1>Omphemetse Maria Tsita</h1
+  <p>IT & Data Implementation | Power BI | Microsoft Azure</p>
+</header>
+
+      
+    </header>
+
+    <section class="contact">
+      <h2>Contact Information</h2>
+      <p><strong>📍 Address:</strong> Meadowlands 1852</p>
+      <p><strong>📞 Phone:</strong> 076 845 0096 | 067 272 7623</p>
+      <p><strong>📧 Email:</strong> <a href="mailto:Omphemetsetsita@yahoo.com">Omphemetsetsita@yahoo.com</a></p>
+      <p id="location">📍 Detecting location...</p>
+      <p id="weather">⛅ Loading weather...</p>
+    </section>
+
+    <section>
+      <h2>Professional Summary</h2>
+      <p>
+        Professional with a Diploma in Network Systems and Microsoft certifications in Power BI Data Analyst, Azure Fundamentals, and Developing Solutions for Microsoft Azure. 
+        Experienced in data implementation, cloud solutions, and data analysis. Passionate about leveraging technology to optimize processes and deliver practical business solutions.
+      </p>
+    </section>
+
+    <section>
+      <h2>Work Experience</h2>
+      <h3>IT & System Implementation Learnership</h3>
+      <p><strong>Dynamic DNA / Cloudsmiths (Pty) Ltd | Jul 2024 – Oct 2024</strong></p>
+      <ul>
+        <li>Data modeling, visualization, and dashboard design using Power BI</li>
+        <li>Core Azure services, security, and cloud computing principles</li>
+        <li>Deploying and managing cloud applications on Azure</li>
+      </ul>
+
+      <h3>Student Enrollment Administrator (Contract)</h3>
+      <p><strong>Department of Education – D12 Jhb South | Mar 2025</strong></p>
+      <ul>
+        <li>Enrolled students and verified grade progression</li>
+        <li>Calculated total school fees including subject costs</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <ul>
+        <li><strong>Diploma in Network Systems</strong> – Boston City Campus, Nov 2024</li>
+        <li>Certificate of Technical Studies: Computer Clerk – Boston City Campus, Nov 2021</li>
+        <li>Matric – Letsibogo Girls Secondary School, Nov 2020</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Certifications</h2>
+      <ul>
+        <li>Microsoft Certified: Power BI Data Analyst Associate (2024)</li>
+        <li>Microsoft Certified: Azure Fundamentals (2024)</li>
+        <li>Microsoft Certified: Developing Solutions for Microsoft Azure (2024)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <ul class="grid-skills">
+        <li>Network Systems</li>
+        <li>Data Analysis (Power BI)</li>
+        <li>Cloud Computing (Azure)</li>
+        <li>Solution Development</li>
+        <li>Advanced Excel</li>
+        <li>Microsoft Office Suite</li>
+        <li>Data Capturing</li>
+        <li>Team Collaboration</li>
+        <li>Time Management</li>
+        <li>Problem Solving</li>
+        <li>Analytical Thinking</li>
+        <li>Payroll Implementation</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Omphemetse Maria Tsita</p>
+    </footer>
+  </div>
+
+  <!-- JavaScript for location & weather -->
+  <script>
+    const locationEl = document.getElementById("location");
+    const weatherEl = document.getElementById("weather");
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async position => {
+        const { latitude, longitude } = position.coords;
+        locationEl.textContent = `📍 Latitude: ${latitude.toFixed(2)}, Longitude: ${longitude.toFixed(2)}`;
+
+        try {
+          const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=b6ab01d1bf2947347da79b6fc1dbb71a`);
+          const data = await response.json();
+          const temp = data.main.temp;
+          const description = data.weather[0].description;
+          weatherEl.textContent = `⛅ Weather: ${description}, ${temp}°C`;
+        } catch (error) {
+          weatherEl.textContent = "⚠️ Weather data unavailable";
+        }
+      });
+    } else {
+      locationEl.textContent = "⚠️ Location not supported by browser.";
+    }
+  </script>
+</body>
+</html>
